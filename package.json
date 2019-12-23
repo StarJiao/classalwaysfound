@@ -3,7 +3,8 @@
 	"displayName": "classalwaysfound",
 	"description": "",
 	"publisher":"starjiao",
-	"version": "0.0.1",
+	"repository":"https://github.com/StarJiao/classalwaysfound.git",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
