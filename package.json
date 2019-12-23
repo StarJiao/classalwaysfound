@@ -2,6 +2,7 @@
 	"name": "classalwaysfound",
 	"displayName": "classalwaysfound",
 	"description": "",
+	"publisher":"starjiao",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.41.0"
