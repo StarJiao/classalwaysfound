@@ -1,19 +1,27 @@
 {
-	"name": "classfound",
-	"displayName": "classfound",
+	"name": "classalwaysfound",
+	"displayName": "classalwaysfound",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
 	"categories": [
-		"Other"
+		"Programming Languages",
+		"Linters",
+		"Formatters"
 	],
 	"activationEvents": [
+		"onLanguage:php",
 		"onCommand:extension.helloWorld"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"languages": [
+			{
+				"id": "php"
+			}
+		],
 		"commands": [
 			{
 				"command": "extension.helloWorld",
