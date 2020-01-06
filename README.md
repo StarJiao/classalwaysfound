@@ -16,7 +16,7 @@ For example:
 
 1. Does not work for php trait.
 2. Use sentence will be tagged while it contains the missing class.
-3. There is no need to tag the class within same package, but this failed .
+3. There is no need to tag the class within same package, but this failed . fix
 4. class in comment will be tagged 
 
 ## Release Notes

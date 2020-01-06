@@ -2,6 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { DiagnosticSeverity } from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
 class Resolver {
 
@@ -110,17 +112,26 @@ class Resolver {
 		return innerClasses;
 	}
 
+	getClassesSameFolder(document: vscode.TextDocument) {
+		let filepath = path.dirname(document.fileName);
+		const files = fs.readdirSync(filepath);
+		return files.map((file) => filepath + '/' + file).filter((filefullpath) => fs.statSync(filefullpath).isFile() && path.extname(filefullpath) === '.php').map((name) => path.basename(name, '.php'));
+	}
+
 	diagnosticNotImported(document: vscode.TextDocument) {
 		let text = document.getText();
-		let phpClasses = this.getPhpClasses(text);
-		let importedPhpClasses = this.getImportedPhpClasses(text);
+		let allClasses = this.getPhpClasses(text);
+		let importedClasses = this.getImportedPhpClasses(text);
 		let aliasClasses = this.getPhpAliasClasses(text);
 		let innerClasses = this.getClassDefineInDoc(text);
+		let sameFolderClasses = this.getClassesSameFolder(document);
+
+		let allImportedClass = importedClasses.concat(aliasClasses, innerClasses, sameFolderClasses);
 
 		// Get phpClasses not present in importedPhpClasses
 
-		let notImported = phpClasses.filter(function (phpClass) {
-			return !importedPhpClasses.includes(phpClass) && !innerClasses.includes(phpClass) && !aliasClasses.includes(phpClass);
+		let notImported = allClasses.filter(function (phpClass) {
+			return !allImportedClass.includes(phpClass);
 		});
 
 		diagnosticCollection.clear();
@@ -170,6 +181,7 @@ function setDiagnostic(document: vscode.TextDocument) {
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	// let folders = vscode.workspace.workspaceFolders;
 	let disposable1 = vscode.workspace.onDidChangeTextDocument((event: vscode.TextDocumentChangeEvent) => {
 		if (event && event.document && event.document.languageId === 'php') {
 			setDiagnostic(event.document);

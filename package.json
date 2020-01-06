@@ -2,9 +2,9 @@
 	"name": "classalwaysfound",
 	"displayName": "classalwaysfound",
 	"description": "",
-	"publisher":"starjiao",
-	"repository":"https://github.com/StarJiao/classalwaysfound.git",
-	"version": "1.0.0",
+	"publisher": "starjiao",
+	"repository": "https://github.com/StarJiao/classalwaysfound.git",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -48,5 +48,9 @@
 		"typescript": "^3.6.4",
 		"tslint": "^5.20.0",
 		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"@types/fs-extra": "^8.0.1",
+		"fs-extra": "^8.1.0"
 	}
 }
