@@ -14,10 +14,11 @@ For example:
 
 ## Known Issues
 
-1. Does not work for php trait.
-2. Use sentence will be tagged while it contains the missing class.
-3. There is no need to tag the class within same package, but this failed . fix
-4. class in comment will be tagged 
+1. Does not work for php trait
+2. Use sentence will be tagged while it contains the missing class. fixed
+3. There is no need to tag the class within same package, but this failed . fixed
+4. class in block comment will be tagged 
+5. similar name will be tagged
 
 ## Release Notes
 

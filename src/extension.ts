@@ -100,7 +100,7 @@ class Resolver {
 	}
 
 	getClassDefineInDoc(text: string) {
-		let regex = /class ([A-Z][A-Za-z0-9\-\_]*)/gm;
+		let regex = /[class|trait|interface] +([A-Z][A-Za-z0-9\-\_]*)/gm;
 		let matches;
 		let innerClasses = [];
 
@@ -150,7 +150,10 @@ class Resolver {
 				let textLine = document.lineAt(startPos);
 				let charBeforeMatch = textLine.text.charAt(startPos.character - 1);
 
-				if (!/\w/.test(charBeforeMatch) && textLine.text.search(/namespace/) === -1) {
+				if (!/\w/.test(charBeforeMatch)
+					&& textLine.text.search(/namespace/) === -1
+					&& textLine.text.search(/^use /) === -1
+					&& textLine.text.search(/^ *\/\//) === -1) {
 					let endPos = document.positionAt(matches.index + matches[0].length);
 					let diagnostic = new vscode.Diagnostic(
 						new vscode.Range(startPos, endPos),
