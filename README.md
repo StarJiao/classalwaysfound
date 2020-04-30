@@ -20,6 +20,10 @@ For example:
 4. class in block comment will be tagged 
 5. similar name will be tagged
 
+## Script
+1. 打包: vsce package 
+2. 发布: vsce publish (需要微软账户)
+
 ## Release Notes
 
 
