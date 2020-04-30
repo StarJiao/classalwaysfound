@@ -1,10 +1,10 @@
 {
 	"name": "classalwaysfound",
 	"displayName": "classalwaysfound",
-	"description": "",
-	"publisher": "starjiao",
+	"description": "show diagnostic information on classes which are not imported",
+	"publisher": "Star",
 	"repository": "https://github.com/StarJiao/classalwaysfound.git",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
